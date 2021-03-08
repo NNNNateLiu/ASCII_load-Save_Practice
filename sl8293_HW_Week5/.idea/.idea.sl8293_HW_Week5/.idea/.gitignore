@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.sl8293_HW_Week5.iml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\msi user\Documents\Codelab1-S21-ClassCode\sl8293_HW_Week5\.idea\.idea.sl8293_HW_Week5\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
