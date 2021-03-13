@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public float autoSavingTimer;
     public Text buildTimersText;
 
+    public GameObject player;
+
+    public GameObject slime;
+    public int slimeGenerateCounts;
+
     private float time;
 
 
@@ -20,14 +25,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        if(time >= autoSavingTimer)
+        if (time >= autoSavingTimer)
         {
             time = 0;
             MapManager.instance.SaveGame();
@@ -35,5 +40,20 @@ public class GameManager : MonoBehaviour
 
         buildTimersText.text = "BuildTimer: " + buildTimes;
 
+    }
+
+    public void SpwanSlimes()
+    {
+        //TODO: generate slimes on Roads tiles
+        List<Vector3> slimeGenerateTransform = new List<Vector3>();
+
+        for (var i = 0; i <= slimeGenerateCounts; i++)
+        {
+            GameObject newObj = Instantiate<GameObject>(slime);
+            Vector3 tempPos = MapManager.instance.
+                roadsPool[Random.Range(0, MapManager.instance.roadsPool.Count)].transform.position;
+            slimeGenerateTransform.Add(tempPos);
+            //newObj.transform.localPosition = 
+        }
     }
 }

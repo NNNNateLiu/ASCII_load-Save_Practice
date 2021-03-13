@@ -14,6 +14,7 @@ public class MapManager : MonoBehaviour
     public GameObject Road;
     public GameObject Camp;
     public GameObject Woods;
+    public GameObject Rocks;
 
     //Tile Stroing
     public GameObject mapOrigin;
@@ -25,6 +26,10 @@ public class MapManager : MonoBehaviour
 
     //Player Inis
     public Transform startPos;
+
+    // pools
+    public List<GameObject> landsPool;
+    public List<GameObject> roadsPool;
 
     //Debug
     public bool isSave;
@@ -85,9 +90,17 @@ public class MapManager : MonoBehaviour
                         break;
                     case '0':
                         newObj = Instantiate<GameObject>(Road);
+                        roadsPool.Add(newObj);
                         break;
                     case '-':
                         newObj = Instantiate<GameObject>(Land);
+                        landsPool.Add(newObj);
+                        break;
+                    case 'R':
+                        newObj = Instantiate<GameObject>(Rocks);
+                        break;
+                    case 'W':
+                        newObj = Instantiate<GameObject>(Woods);
                         break;
                     default:
                         newObj = null;
@@ -142,6 +155,10 @@ public class MapManager : MonoBehaviour
                 if (levelSaver.GetComponent<LevelSaver>().currentObject == "woods")
                 {
                     lineContent += "W";
+                }
+                if (levelSaver.GetComponent<LevelSaver>().currentObject == "rocks")
+                {
+                    lineContent += "R";
                 }
             }
             lineContent += "\n";
