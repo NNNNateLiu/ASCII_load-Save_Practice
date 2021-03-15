@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject slime;
     public int slimeGenerateCounts;
 
-    private float time;
+    private float time = 0;
+    private bool isPaused = false;
 
     public bool generateSlimes = false;
 
@@ -41,6 +42,14 @@ public class GameManager : MonoBehaviour
             time = 0;
             MapManager.instance.SaveGame();
         }
+        if(time == 0)
+        {
+            SpwanSlimes();
+        }
+        if(time >= 12)
+        {
+            time = 0;
+        }
 
         buildTimersText.text = "BuildTimer: " + buildTimes;
 
@@ -48,6 +57,22 @@ public class GameManager : MonoBehaviour
         {
             SpwanSlimes();
             generateSlimes = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            isPaused = !isPaused;
+
+            if(isPaused)
+            {
+                Time.timeScale = 0;
+
+            }
+            else
+            {
+                Time.timeScale = 1;
+
+            }
         }
     }
 

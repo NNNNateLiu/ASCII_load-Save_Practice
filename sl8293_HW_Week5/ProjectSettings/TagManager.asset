@@ -8,6 +8,9 @@ TagManager:
   - land
   - road
   - woods
+  - player
+  - slime
+  - wolf
   layers:
   - Default
   - TransparentFX
