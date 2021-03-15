@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class LevelSaver : MonoBehaviour
 {
-    public string currentObject;
+    public string currentObjectTag;
+    public GameObject currentObject;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -15,6 +16,7 @@ public class LevelSaver : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("enter");
-        currentObject = other.gameObject.tag;
+        currentObjectTag = other.gameObject.tag;
+        currentObject = other.gameObject;
     }
 }

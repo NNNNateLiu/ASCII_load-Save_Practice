@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8603734570911263761}
   - component: {fileID: 4879438751022228869}
   - component: {fileID: 2263315828017688875}
-  - component: {fileID: 113843841082375764}
   - component: {fileID: -5940549248225140967}
   m_Layer: 0
   m_Name: Land
@@ -97,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee47f53792861b4aaeb6fd3ea5bf737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapManager: {fileID: 0}
 --- !u!61 &2263315828017688875
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,19 +122,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
---- !u!114 &113843841082375764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361847495466701189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee47f53792861b4aaeb6fd3ea5bf737, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapManager: {fileID: 0}
 --- !u!50 &-5940549248225140967
 Rigidbody2D:
   serializedVersion: 4

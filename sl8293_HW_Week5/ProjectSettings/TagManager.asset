@@ -11,6 +11,7 @@ TagManager:
   - player
   - slime
   - wolf
+  - rocks
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Creatures
+  - Savers
   - 
   - 
   - 

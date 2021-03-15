@@ -31,6 +31,7 @@ public class MapManager : MonoBehaviour
     // pools
     public List<GameObject> landsPool;
     public List<GameObject> roadsPool;
+    public List<GameObject> woodsPool;
 
     //Debug
     public bool isSave;
@@ -124,6 +125,9 @@ public class MapManager : MonoBehaviour
 
     public void SaveGame()
     {
+        roadsPool.Clear();
+        landsPool.Clear();
+
         file_name = "SavedLevel.txt";
         
         string current_file_path =
@@ -141,23 +145,25 @@ public class MapManager : MonoBehaviour
             {
                 GameObject levelSaver = SaversLine.GetComponent<LevelSavers>().levelSavers[x];
 
-                if (levelSaver.GetComponent<LevelSaver>().currentObject == "land")
+                if (levelSaver.GetComponent<LevelSaver>().currentObjectTag == "land")
                 {
+                    landsPool.Add(levelSaver.GetComponent<LevelSaver>().currentObject);
                     lineContent += "-";
                 }
-                if (levelSaver.GetComponent<LevelSaver>().currentObject == "road")
+                if (levelSaver.GetComponent<LevelSaver>().currentObjectTag == "road")
                 {
+                    roadsPool.Add(levelSaver.GetComponent<LevelSaver>().currentObject);
                     lineContent += "0";
                 }
-                if (levelSaver.GetComponent<LevelSaver>().currentObject == "camp")
+                if (levelSaver.GetComponent<LevelSaver>().currentObjectTag == "camp")
                 {
                     lineContent += "S";
                 }
-                if (levelSaver.GetComponent<LevelSaver>().currentObject == "woods")
+                if (levelSaver.GetComponent<LevelSaver>().currentObjectTag == "woods")
                 {
                     lineContent += "W";
                 }
-                if (levelSaver.GetComponent<LevelSaver>().currentObject == "rocks")
+                if (levelSaver.GetComponent<LevelSaver>().currentObjectTag == "rocks")
                 {
                     lineContent += "R";
                 }
@@ -174,21 +180,35 @@ public class MapManager : MonoBehaviour
     public void Build(Transform transform, GameObject gameobject)
     {
 
-        if(GameManager.instance.buildTimes > 0)
+        if (GameManager.instance.buildTimes > 0)
         {
-            if (gameobject.tag != "camp" && gameobject.tag != "land" && gameobject.tag != "woods")
+            if (gameobject.tag == "road")
             {
                 Destroy(gameobject);
                 GameObject newObj = Instantiate<GameObject>(Woods);
                 newObj.transform.parent = mapOrigin.transform;
                 newObj.transform.localPosition = transform.localPosition;
+                woodsPool.Add(newObj);
                 GameManager.instance.buildTimes--;
                 isSave = true;
+
+                GameManager.instance.woodResources += 1;
             }
-            else
+
+            if (gameobject.tag == "land")
             {
-                Debug.Log("Not On Right Place");
+                Destroy(gameobject);
+                GameObject newObj = Instantiate<GameObject>(Rocks);
+                newObj.transform.parent = mapOrigin.transform;
+                newObj.transform.localPosition = transform.localPosition;
+                GameManager.instance.buildTimes--;
+                isSave = true;
+
+                PlayerController.instance.maxHealth += 3;
+                GameManager.instance.rockResources += 1;
             }
+
+            
 
         }
         else

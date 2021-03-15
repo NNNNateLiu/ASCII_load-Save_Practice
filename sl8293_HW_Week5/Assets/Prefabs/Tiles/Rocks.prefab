@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2532646799163686699}
   m_Layer: 0
   m_Name: Rocks
-  m_TagString: woods
+  m_TagString: rocks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee47f53792861b4aaeb6fd3ea5bf737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapManager: {fileID: 0}
 --- !u!50 &2532646799163686699
 Rigidbody2D:
   serializedVersion: 4

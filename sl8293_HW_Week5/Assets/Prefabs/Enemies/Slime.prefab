@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6855770902621443932}
   - component: {fileID: 1835952131}
   - component: {fileID: 3244443359045744205}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slime
   m_TagString: slime
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 7869743383567284855}
   - component: {fileID: 7146910125863789737}
   - component: {fileID: 4440176581198523329}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SlimeAni
   m_TagString: Untagged
   m_Icon: {fileID: 0}
