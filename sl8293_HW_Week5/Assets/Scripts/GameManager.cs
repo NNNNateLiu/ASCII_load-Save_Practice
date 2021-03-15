@@ -10,13 +10,16 @@ public class GameManager : MonoBehaviour
     public float autoSavingTimer;
     public Text buildTimersText;
 
+    public GameObject creatureOrigin;
     public GameObject player;
-
     public GameObject slime;
     public int slimeGenerateCounts;
 
     private float time;
 
+    public bool generateSlimes = false;
+
+    public List<GameObject> slimePoolPerLoop = new List<GameObject>();
 
     private void Awake()
     {
@@ -25,7 +28,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GameObject newPlayer = Instantiate(player, MapManager.instance.startPos.position, Quaternion.identity);
+        newPlayer.transform.parent = creatureOrigin.transform;
     }
 
     // Update is called once per frame
@@ -40,20 +44,47 @@ public class GameManager : MonoBehaviour
 
         buildTimersText.text = "BuildTimer: " + buildTimes;
 
+        if(generateSlimes)
+        {
+            SpwanSlimes();
+            generateSlimes = false;
+        }
     }
 
     public void SpwanSlimes()
     {
-        //TODO: generate slimes on Roads tiles
-        List<Vector3> slimeGenerateTransform = new List<Vector3>();
+        List<GameObject> allSlimeGenerateTransform = MapManager.instance.roadsPool;
 
-        for (var i = 0; i <= slimeGenerateCounts; i++)
+        for (var i = 0; i <= slimeGenerateCounts - 1; i++)
         {
-            GameObject newObj = Instantiate<GameObject>(slime);
-            Vector3 tempPos = MapManager.instance.
-                roadsPool[Random.Range(0, MapManager.instance.roadsPool.Count)].transform.position;
-            slimeGenerateTransform.Add(tempPos);
-            //newObj.transform.localPosition = 
+            bool canAdd = true;
+            //get a random pos in allslime
+            Vector3 tempPos = allSlimeGenerateTransform[Random.Range(0, allSlimeGenerateTransform.Count)].transform.position;
+            Debug.Log(tempPos);
+
+            if(slimePoolPerLoop != null)
+            {
+                for (var j = 0; j <= slimePoolPerLoop.Count - 1; j++)
+                {
+                    if (tempPos == slimePoolPerLoop[j].transform.position)
+                    {
+                        canAdd = false;
+                        break;
+                    }
+                }
+            }
+            
+
+            if (canAdd)
+            {
+                GameObject newObj = Instantiate<GameObject>(slime);
+                newObj.transform.localPosition = tempPos;
+                slimePoolPerLoop.Add(newObj);
+            }
+            else
+            {
+                i--;
+            }
         }
     }
 }

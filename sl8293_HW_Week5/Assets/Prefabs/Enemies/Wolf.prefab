@@ -123,8 +123,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 456587591
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f2adf6e55dec874abadc2081a27b96f, type: 3}
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
@@ -204,8 +204,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 456587591
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f2adf6e55dec874abadc2081a27b96f, type: 3}
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
@@ -285,8 +285,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 456587591
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7c6e99e784534fa43a4d2480b242ad3f, type: 3}
   m_Color: {r: 0.6039216, g: 0.6039216, b: 0.6039216, a: 1}
@@ -366,8 +366,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 456587591
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f2adf6e55dec874abadc2081a27b96f, type: 3}
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
@@ -447,8 +447,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 456587591
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7c6e99e784534fa43a4d2480b242ad3f, type: 3}
   m_Color: {r: 0.6039216, g: 0.6039216, b: 0.6039216, a: 1}
@@ -528,8 +528,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 456587591
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f2adf6e55dec874abadc2081a27b96f, type: 3}
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
@@ -552,7 +552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3118075880295692561}
   m_Layer: 0
-  m_Name: Wolf 1
+  m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

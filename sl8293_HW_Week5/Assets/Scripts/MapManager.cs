@@ -26,6 +26,7 @@ public class MapManager : MonoBehaviour
 
     //Player Inis
     public Transform startPos;
+    public List<Transform> wayPoints;
 
     // pools
     public List<GameObject> landsPool;
