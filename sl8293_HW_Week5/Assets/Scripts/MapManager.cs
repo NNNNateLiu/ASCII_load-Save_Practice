@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using DG.Tweening;
+using System.Net;
 
 public class MapManager : MonoBehaviour
 {
@@ -62,10 +63,10 @@ public class MapManager : MonoBehaviour
             Application.dataPath +
             "/Logs/" +
             file_name;
-        
+
         //read all content in current_file_path 
         string[] fileLines = File.ReadAllLines(current_file_path);
-        
+
         for (var y = 0; y < fileLines.Length; y++)
         {
             string lineText = fileLines[y];
@@ -204,6 +205,7 @@ public class MapManager : MonoBehaviour
                 GameManager.instance.buildTimes--;
                 isSave = true;
 
+                PlayerController.instance.currentHealth += 3;
                 PlayerController.instance.maxHealth += 3;
                 GameManager.instance.rockResources += 1;
             }

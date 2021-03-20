@@ -17,9 +17,12 @@ public class PlayerController : MonoBehaviour
     private float d;
     private float e;
 
+    public bool willReturn;
+
     //player round info
     public int maxHealth = 20;
-    public int currentHealth = 1;
+    public int currentHealth = 20;
+    public int armor = 0;
 
     private void Awake()
     {
@@ -28,6 +31,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         wayPoints = MapManager.instance.wayPoints;
+        maxHealth = GameManager.instance.initMaxHealth;
+        armor = GameManager.instance.initArmor;
+        currentHealth = GameManager.instance.initMaxHealth;
     }
     private void Update()
     {
@@ -66,6 +72,17 @@ public class PlayerController : MonoBehaviour
         {
             timer = 0;
         }
+
+        if(currentHealth <= 0)
+        {
+            GameManager.instance.isDead = true;
+            Destroy(gameObject);
+        }
+
+        if(GameManager.instance.isBack)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -74,13 +91,12 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             GameManager.instance.slimePoolPerLoop.Remove(other.gameObject);
-            currentHealth -= 2;
+            currentHealth -= (2 - Mathf.FloorToInt(armor * .2f));
 
             int dropType = Random.Range(1, 5);
             string strDrop = dropType.ToString();
             char[] chars = strDrop.ToCharArray();
 
-            Debug.Log("drop type :" + dropType);
             switch(chars[0])
             {
                 case '1':
@@ -113,13 +129,12 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             GameManager.instance.wolfPoolPerLoop.Remove(other.gameObject);
-            currentHealth -= 5;
+            currentHealth -= (5 - Mathf.FloorToInt(armor * .2f)); ;
 
             int dropType = Random.Range(1, 5);
             string strDrop = dropType.ToString();
             char[] chars = strDrop.ToCharArray();
 
-            Debug.Log("drop type :" + dropType);
             switch (chars[0])
             {
                 case '1':
@@ -150,16 +165,22 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.tag == "camp")
         {
-            int healthModifier = Mathf.FloorToInt(maxHealth * .4f);
-            if(currentHealth + healthModifier >= maxHealth)
+            if(willReturn)
             {
-                currentHealth = maxHealth;
+                GameManager.instance.isBack = true;
             }
             else
             {
-                currentHealth = currentHealth + healthModifier;
+                int healthModifier = Mathf.FloorToInt(maxHealth * .4f);
+                if (currentHealth + healthModifier >= maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+                else
+                {
+                    currentHealth = currentHealth + healthModifier;
+                }
             }
-
         }
     }
 

@@ -15,7 +15,6 @@ public class LevelSaver : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("enter");
         currentObjectTag = other.gameObject.tag;
         currentObject = other.gameObject;
     }
