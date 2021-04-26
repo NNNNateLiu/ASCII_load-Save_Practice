@@ -200,14 +200,12 @@ public class MapManager : MonoBehaviour
             {
                 Destroy(gameobject);
                 GameObject newObj = Instantiate<GameObject>(Rocks);
+                Buildings rock = new Stone("stone", "round buildings", 1);
                 newObj.transform.parent = mapOrigin.transform;
                 newObj.transform.localPosition = transform.localPosition;
-                GameManager.instance.buildTimes--;
                 isSave = true;
 
-                PlayerController.instance.currentHealth += 3;
-                PlayerController.instance.maxHealth += 3;
-                GameManager.instance.rockResources += 1;
+                rock.OnBuild();
             }
 
             
